@@ -51,7 +51,7 @@ export default function TaskItem({ task }) {
   return (
     <TouchableOpacity
       style={[styles.taskContainer, task.isCompleted && styles.completed]}
-      onPress={handleView} // 👈 Tap to view details
+      onPress={handleView} 
     >
       <TouchableOpacity onPress={handleToggleComplete} style={styles.statusCircle}>
         <Text style={{ color: task.isCompleted ? 'green' : 'gray', fontSize: 18 }}>
@@ -78,12 +78,10 @@ export default function TaskItem({ task }) {
         </View>
       </View>
 
-      {/* 🖊️ Edit Icon */}
       <TouchableOpacity onPress={handleEdit} style={styles.editBtn}>
         <Text style={{ fontSize: 18 }}>✏️</Text>
       </TouchableOpacity>
 
-      {/* 🗑️ Delete Icon */}
       <TouchableOpacity onPress={handleDelete} style={styles.deleteBtn}>
         <Text style={{ fontSize: 18 }}>🗑️</Text>
       </TouchableOpacity>
@@ -154,9 +152,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#ef4444',
   },
   deleteBtn: {
-    marginLeft: 10,
+    marginTop:50,
   },
   editBtn: {
-    marginLeft: 10,
+    marginBottom:50,
   },
 });

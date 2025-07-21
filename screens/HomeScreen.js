@@ -89,7 +89,7 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
+
       <View style={styles.header}>
         <Text style={styles.dateText}>
           {format(new Date(), 'EEEE, d MMMM')}
@@ -97,7 +97,6 @@ export default function HomeScreen() {
         <Text style={styles.title}>My Tasks</Text>
       </View>
 
-      {/* Filters */}
       <View style={styles.filters}>
         <View style={styles.pickerContainer}>
           <Text style={styles.pickerLabel}>Priority</Text>
@@ -127,7 +126,6 @@ export default function HomeScreen() {
         </View>
       </View>
 
-      {/* Task List */}
       <FlatList
         ListHeaderComponent={
           <>
@@ -142,7 +140,6 @@ export default function HomeScreen() {
         contentContainerStyle={{ paddingBottom: 100 }}
       />
 
-      {/* Add Task Button */}
       <TouchableOpacity
         style={styles.fab}
         onPress={() => navigation.navigate('AddTask')}
@@ -188,11 +185,11 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: '#444',
     marginTop: 6,
-    marginBottom: 2,
   },
   picker: {
-    height: 40,
+    height: 55,
     width: '100%',
+    marginBottom:4
   },
   sectionHeader: {
     fontSize: 18,
