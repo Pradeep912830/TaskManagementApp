@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     borderRadius: 6,
   },
-  priorityText: {
+  priorityText:  {
     fontSize: 12,
     color: '#fff',
     fontWeight: '600',
