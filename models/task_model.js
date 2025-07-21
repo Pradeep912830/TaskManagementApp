@@ -1,12 +1,10 @@
-// models/Task.js
-
 export default class Task {
   constructor({
     id = null,
     title = '',
     description = '',
     dueDate = '',
-    priority = 'low', // 'low' | 'medium' | 'high'
+    priority = 'low',
     isCompleted = false,
   }) {
     this.id = id;
@@ -17,7 +15,6 @@ export default class Task {
     this.isCompleted = isCompleted;
   }
 
-  // Convert class instance to plain object for Firebase
   toJSON() {
     return {
       title: this.title,
@@ -28,7 +25,6 @@ export default class Task {
     };
   }
 
-  // Reconstruct class instance from Firebase
   static fromJSON(id, json) {
     return new Task({
       id,

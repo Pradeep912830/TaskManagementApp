@@ -7,10 +7,10 @@ export default function WelcomeScreen({ navigation }) {
       <View style={styles.iconBox}>
         <Text style={styles.checkIcon}>✔️</Text>
       </View>
-      
+
       <Text style={styles.title}>Get things done.</Text>
       <Text style={styles.subtitle}>Just a click away from planning your tasks.</Text>
-      
+
       <TouchableOpacity style={styles.nextButton} onPress={() => navigation.navigate('SignUp')}>
         <Text style={styles.arrow}>→</Text>
       </TouchableOpacity>
@@ -58,16 +58,16 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     marginTop: 10,
-    width:120,
-    height:55
+    width: 120,
+    height: 55
   },
 
   arrow: {
     color: 'white',
     fontSize: 24,
-    alignItems:'center',
-    justifyContent:'center',
-    flex:1
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1
   },
 
 });

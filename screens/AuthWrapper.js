@@ -10,14 +10,13 @@ export default function AuthWrapper({ navigation }) {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setLoading(false);
 
-      // Reset navigation stack to prevent going back
       navigation.reset({
         index: 0,
         routes: [{ name: user ? 'Home' : 'Login' }],
       });
     });
 
-    return () => unsubscribe(); // Cleanup on unmount
+    return () => unsubscribe();
   }, []);
 
   if (loading) {
@@ -28,7 +27,7 @@ export default function AuthWrapper({ navigation }) {
     );
   }
 
-  return null; // Prevent rendering anything while navigating
+  return null;
 }
 
 const styles = StyleSheet.create({
@@ -36,6 +35,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff', // Optional: match your app theme
+    backgroundColor: '#fff',
   },
 });

@@ -17,27 +17,27 @@ export default function TaskItem({ task }) {
   };
 
   const handleDelete = () => {
-  Alert.alert(
-    'Delete Task',
-    'Are you sure you want to delete this task?',
-    [
-      { text: 'Cancel', style: 'cancel' },
-      {
-        text: 'Delete',
-        style: 'destructive',
-        onPress: async () => {
-          try {
-            await deleteTask(task.id, userId); // ✅ Pass userId here
-          } catch (error) {
-            Alert.alert('Error', 'Failed to delete task.');
-            console.error('Delete Error:', error);
-          }
+    Alert.alert(
+      'Delete Task',
+      'Are you sure you want to delete this task?',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Delete',
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              await deleteTask(task.id, userId);
+            } catch (error) {
+              Alert.alert('Error', 'Failed to delete task.');
+              console.error('Delete Error:', error);
+            }
+          },
         },
-      },
-    ],
-    { cancelable: true }
-  );
-};
+      ],
+      { cancelable: true }
+    );
+  };
 
 
   const handleEdit = () => {
