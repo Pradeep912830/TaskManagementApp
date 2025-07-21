@@ -17,35 +17,41 @@ export default function TaskItem({ task }) {
   };
 
   const handleDelete = () => {
-    Alert.alert(
-      'Delete Task',
-      'Are you sure you want to delete this task?',
-      [
-        { text: 'Cancel', style: 'cancel' },
-        {
-          text: 'Delete',
-          style: 'destructive',
-          onPress: async () => {
-            try {
-              await deleteTask(userId, task.id); // ✅ Pass userId and task.id
-            } catch (error) {
-              Alert.alert('Error', 'Failed to delete task.');
-            }
-          },
+  Alert.alert(
+    'Delete Task',
+    'Are you sure you want to delete this task?',
+    [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Delete',
+        style: 'destructive',
+        onPress: async () => {
+          try {
+            await deleteTask(task.id, userId); // ✅ Pass userId here
+          } catch (error) {
+            Alert.alert('Error', 'Failed to delete task.');
+            console.error('Delete Error:', error);
+          }
         },
-      ],
-      { cancelable: true }
-    );
-  };
+      },
+    ],
+    { cancelable: true }
+  );
+};
+
 
   const handleEdit = () => {
     navigation.navigate('EditTask', { task });
   };
 
+  const handleView = () => {
+    navigation.navigate('TaskDetails', { task });
+  };
+
   return (
     <TouchableOpacity
       style={[styles.taskContainer, task.isCompleted && styles.completed]}
-      onLongPress={handleEdit}
+      onPress={handleView} // 👈 Tap to view details
     >
       <TouchableOpacity onPress={handleToggleComplete} style={styles.statusCircle}>
         <Text style={{ color: task.isCompleted ? 'green' : 'gray', fontSize: 18 }}>
@@ -65,15 +71,19 @@ export default function TaskItem({ task }) {
         ) : null}
 
         <View style={styles.metaRow}>
-          <Text style={styles.dueDate}>
-            Due: {new Date(task.dueDate).toDateString()}
-          </Text>
+          <Text style={styles.dueDate}>Due: {new Date(task.dueDate).toDateString()}</Text>
           <View style={[styles.priorityBadge, styles[task.priority.toLowerCase()]]}>
             <Text style={styles.priorityText}>{task.priority}</Text>
           </View>
         </View>
       </View>
 
+      {/* 🖊️ Edit Icon */}
+      <TouchableOpacity onPress={handleEdit} style={styles.editBtn}>
+        <Text style={{ fontSize: 18 }}>✏️</Text>
+      </TouchableOpacity>
+
+      {/* 🗑️ Delete Icon */}
       <TouchableOpacity onPress={handleDelete} style={styles.deleteBtn}>
         <Text style={{ fontSize: 18 }}>🗑️</Text>
       </TouchableOpacity>
@@ -128,7 +138,7 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     borderRadius: 6,
   },
-  priorityText:  {
+  priorityText: {
     fontSize: 12,
     color: '#fff',
     fontWeight: '600',
@@ -144,6 +154,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#ef4444',
   },
   deleteBtn: {
+    marginLeft: 10,
+  },
+  editBtn: {
     marginLeft: 10,
   },
 });

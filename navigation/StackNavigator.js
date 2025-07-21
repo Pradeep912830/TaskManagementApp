@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen';
 import AddTaskScreen from '../screens/AddTaskScreen';
 import AuthWrapper from '../screens/AuthWrapper';
 import EditTaskScreen from '../screens/EditTaskScreen';
+import TaskDetailsScreen from '../screens/TaskDetailsScreen';
 
 const Stack = createStackNavigator();
 
@@ -28,6 +29,7 @@ export default function StackNavigator() {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="AddTask" component={AddTaskScreen} />
       <Stack.Screen name="EditTask" component={EditTaskScreen} />
+      <Stack.Screen name="TaskDetails" component={TaskDetailsScreen} />
     </Stack.Navigator>
   );
 }

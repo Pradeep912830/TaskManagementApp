@@ -30,16 +30,11 @@ export const getTasks = (userId, callback) => {
 };
 
 // ✅ Fixed: Delete a specific task (userId, taskId)
-export const deleteTask = async (userId, taskId) => {
-  try {
-    const taskRef = ref(database, `tasks/${userId}/${taskId}`);
-    await remove(taskRef);
-    console.log(`Deleted task ${taskId}`);
-  } catch (error) {
-    console.error('Failed to delete task:', error);
-    throw error;
-  }
+export const deleteTask = async (taskId, userId) => {
+  const taskRef = ref(database, `tasks/${userId}/${taskId}`);
+  await remove(taskRef);
 };
+
 
 // Update a specific task
 export const updateTask = async (userId, taskId, updatedTask) => {
